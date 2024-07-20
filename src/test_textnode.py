@@ -44,6 +44,15 @@ class TestTextDelimiter(unittest.TestCase):
         result = split_nodes_delimiter(test_case, "`", text_type_text)
         self.assertListEqual(result, should_equal)
 
+    def test_nested_string_formating(self):
+        test_case = [TextNode(text="This *has **some** `code within`it*", text_type=text_type_text)]
+        should_equal = [
+                TextNode(text="This ", text_type=text_type_text),
+                TextNode(text="has **some** `code within`it", text_type=text_type_italic)
+                ]
+        result = split_nodes_delimiter(test_case, "*", text_type_text)
+        self.assertListEqual(result, should_equal)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -25,9 +25,19 @@ text_type_link = "link"
 text_type_image = "image"
 delimiter_map = {
         "`": text_type_code,
-        "**": text_type_bold,
         "*": text_type_italic,
+        "**": text_type_bold,
         }
+
+
+def type_from_delimiter(delimiter):
+    if delimiter == "*":
+        return text_type_italic
+    if delimiter == "**":
+        return text_type_bold
+    if delimiter == "`":
+        return text_type_code
+    return None
 
 
 def text_node_to_html_node(text_node):
