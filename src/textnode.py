@@ -40,6 +40,15 @@ def type_from_delimiter(delimiter):
     return None
 
 
+def delimiter_from_type(text_type):
+    if text_type == text_type_bold:
+        return "**"
+    if text_type == text_type_italic:
+        return "*"
+    if text_type == text_type_code:
+        return "`"
+
+
 def text_node_to_html_node(text_node):
     text_type = text_node.text_type
     if text_type == text_type_text:
